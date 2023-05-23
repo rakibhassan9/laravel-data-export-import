@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Exports\UserExport;
-use App\Exports\UserImport;
+use App\Imports\UserImport;
 use Excel;
 
 
@@ -18,6 +18,6 @@ class UserController extends Controller
 
     public function importUser(Request $request){
        
-        dd('import');
+       Excel::import(new UsersImport, $request->file('file'));
     }
 }
